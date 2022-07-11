@@ -1,0 +1,30 @@
+.add-certificate-content-table {
+    width: 100%;
+    height: 30px;
+    margin: 0 auto;
+    border: none;
+    border-radius: 10px;
+}
+.login-content-table {
+    width: 90%;
+    height: 30px;
+    margin: 5px auto;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+}
+.size-table-for-certificate {
+    width: 300px;
+    border: 2px dotted;
+
+}
+.td-center {
+    width: 50%;
+    text-align: center;
+    padding: 1%;
+}
+.td-left {
+    width: 50%;
+    text-align: left;
+    padding: 1%;
+}
