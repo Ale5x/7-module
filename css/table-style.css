@@ -13,6 +13,12 @@
     border-radius: 10px;
     text-align: center;
 }
+.basket-content-table {
+    width: 90%;
+    height: 30px;
+    margin: 5px auto;
+    text-align: center;
+}
 .size-table-for-certificate {
     width: 300px;
     border: 2px dotted;
