@@ -1,24 +1,8 @@
-.login-placeholder-setting {
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    top: calc(50% - 15px);
-    /*size: auto 50%;*/
-}
-.description-placeholder-setting {
-    width: 450px;
-    height: 100px;
-    border-radius: 10px;
-    border: none;
-}
 .search-by-tag-placeholder-setting {
     width: 200px;
     height: 40px;
     border-radius: 10px;
     border: none;
-}
-.box-text {
-    background-color: chartreuse;
 }
 .align-text-center {
     text-align-last: center;
@@ -29,32 +13,23 @@
 .align-text-right {
     text-align-last: right;
 }
-
-.align-left {
-    text-align-last: left;
-}
 .align-table-center {
     margin-left: auto;
     margin-right: auto;
-}
-
-.align-content-right {
-    margin-left: auto;
-    margin-right: 0;
 }
 .align-content-center {
     margin-left: auto;
     margin-right: auto;
 }
-.size-icon {
+.size-icon-large {
     width: 200px;
     height: 200px;
 }
-.size-menu {
+.size-icon-menu {
     width: 20px;
     height: 20px;
 }
-.size-login {
+.size-icon-small {
     width: 30px;
     height: 30px;
 }

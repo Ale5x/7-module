@@ -13,6 +13,12 @@
     border-radius: 10px;
     text-align: center;
 }
+thead {
+    color: #FFFFFF;
+    background-color: black;
+    font-size: 35px;
+    text-align: center;
+}
 .basket-content-table {
     width: 90%;
     height: 30px;
@@ -24,13 +30,8 @@
     border: 2px dotted;
 
 }
-.td-center {
-    width: 50%;
-    text-align: center;
-    padding: 1%;
-}
-.td-left {
-    width: 50%;
+.basket-content-table {
+    width: 90%;
+    margin: 5px auto;
     text-align: left;
-    padding: 1%;
 }

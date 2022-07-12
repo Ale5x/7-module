@@ -1,7 +1,6 @@
 .login-form {
     width: 300px;
     height: 150px;
-    background-color: grey;
     position: absolute;
     left: 0;
     right: 0;
@@ -11,7 +10,6 @@
 .registration-form {
     width: 500px;
     height: 200px;
-    background-color: grey;
     position: absolute;
     left: 0;
     right: 0;
@@ -21,7 +19,6 @@
 .add-certificate-form {
     width: 700px;
     height: 500px;
-    background-color: grey;
     position: absolute;
     left: 0;
     right: 0;
@@ -43,7 +40,7 @@
     left: 0;
     right: 0;
     margin: 0 auto;
-    top: 150px;
+    top: 50px;
 }
 .basket-form-buy {
     width: 80%;
@@ -51,20 +48,17 @@
     margin-right: auto;
 }
 .form-icon-login {
-    /*margin-right: 50px;*/
-    margin-left: 95%;
+    margin-left: 90%;
     top: 10px;
     position: absolute;
 }
 .form-icon-registration {
-    /*margin-right: 50px;*/
-    margin-left: 97%;
+    margin-left: 95%;
     top: 10px;
     position: absolute;
 }
 .form-icon-basket {
-    /*margin-right: 50px;*/
-    margin-left: 90%;
+    margin-left: 85%;
     top: 10px;
     position: absolute;
 }
