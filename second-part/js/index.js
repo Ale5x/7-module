@@ -120,21 +120,181 @@ const CERTIFICATES = {
             "type": "GET"
         }
     }
+};
+
+document.querySelector('.size-table-for-certificate').innerHTML = `<table class="certificates"></table>`;
+// document.querySelector('.certificates').innerHTML = `<div class="certificates"></div>`;
+console.log(CERTIFICATES._embedded.giftCertificateDtoList);
+
+let step = 3;
+for (let i = 0; CERTIFICATES._embedded.giftCertificateDtoList.length; i = i + step) {
+
+    let divElement = document.createElement('div');
+    divElement.innerHTML = `
+         <div>
+            <h1>Name -> ${CERTIFICATES._embedded.giftCertificateDtoList[i].name}</h1>
+            <h3>ID -> ${CERTIFICATES._embedded.giftCertificateDtoList[i].giftCertificateDtoId}</h3>
+            <h3>Price -> ${CERTIFICATES._embedded.giftCertificateDtoList[i].price}</h3>
+        </div`;
+
+    document.querySelector('.certificates').appendChild(divElement)
+
+    // let rowLine = document.createElement('tr');
+    // document.querySelector('.certificate').appendChild(rowLine);
+
+    // for(let j = 0; j < step; j++) {
+    //
+    //     document.querySelector('.size-table-for-certificate').innerHTML = `<table class="certificate"></table>`;
+    //     let rowLine = document.createElement('tr');
+    //     document.querySelector('.certificate').appendChild(rowLine);
+    //
+    //     console.log("ID =>", CERTIFICATES._embedded.giftCertificateDtoList[i +j].giftCertificateDtoId);
+    //     console.log(CERTIFICATES._embedded.giftCertificateDtoList[i +j].name);
+    //     // let rowPosition = document.createElement('tr');
+    //
+    //     let rowImage = document.createElement('tr');
+    //     rowImage.innerHTML = `<td><img src="../image/icon-certificate.png" class="size-icon-large"></td>`;
+    //     document.querySelector('.certificate').appendChild(rowImage);
+    //
+    //     let rowName = document.createElement('tr');
+    //     rowName.innerHTML = `<td colspan="2">${CERTIFICATES._embedded.giftCertificateDtoList[i + j].name}</td>`;
+    //     document.querySelector('.certificate').appendChild(rowName);
+    //
+    //     let rowPrice = document.createElement('tr');
+    //     rowPrice.innerHTML = `<td><h1>${CERTIFICATES._embedded.giftCertificateDtoList[i + j].price}</h1></td>`;
+    //     document.querySelector('.certificate').appendChild(rowPrice);
+    //
+    //     let rowId = document.createElement('tr');
+    //     rowId.innerHTML = `<td><h1>ID: ${CERTIFICATES._embedded.giftCertificateDtoList[i + j].giftCertificateDtoId}</h1></td>`;
+    //     document.querySelector('.certificate').appendChild(rowId);
+    //
+    //     let rowButton = document.createElement('tr');
+    //     rowButton.innerHTML = `<td><input type="submit" value="Add to basket" class="button-add-to-basket"></td>`;
+    //     document.querySelector('.certificate').appendChild(rowButton);
+    //
+    //
+    //     // document.querySelector('.certificate').appendChild(rowPosition);
+    // }
+
 }
 
 
-document.querySelector('.size-table-for-certificate').innerHTML = `<table class="certificate"></table>`
-    console.log(CERTIFICATES._embedded.giftCertificateDtoList)
-    for (let i = 0; CERTIFICATES._embedded.giftCertificateDtoList.length; i++) {
-        console.log(CERTIFICATES._embedded.giftCertificateDtoList[i].name)
-        let row = document.createElement('tr')
-        row.innerHTML = `<td><img src="../image/icon-certificate.png" class="size-icon-large"></td>`
-        document.querySelector('.certificate').appendChild(row)
-        let rowD = document.createElement('tr')
-        rowD.innerHTML = `<td>${CERTIFICATES._embedded.giftCertificateDtoList[i].name}</td>`
-        document.querySelector('.certificate').appendChild(rowD)
-    }
 
+
+
+// document.querySelector('.content').innerHTML = `<table class="phone"></table>`;
+// for (key in phoneNumber) {
+//     let row = document.createElement('tr')
+//     row.innerHTML = `<td colspan = "2">${key}</td>`
+//     document.querySelector('.phone').appendChild(row)
+//
+//     for (let i = 0; i < phoneNumber[key].length; i++) {
+//         let row = document.createElement('tr')
+//         row.innerHTML = `
+//             <td>${phoneNumber[key][i][0]}</td>
+//             <td>${phoneNumber[key][i][1]}</td>
+//             `
+//         document.querySelector('.phone').appendChild(row)
+//     }
+// }
+
+
+/**
+ * document.querySelector('.size-table-for-certificate').innerHTML = `<table class="certificate"></table>`;
+ console.log(CERTIFICATES._embedded.giftCertificateDtoList);
+ let countPosition = 1;
+ let countElementInRow = 1;
+ let step = 3;
+ for (let i = 0; CERTIFICATES._embedded.giftCertificateDtoList.length; i = i + step) {
+        console.log(CERTIFICATES._embedded.giftCertificateDtoList[i].name);
+        console.log(CERTIFICATES._embedded.giftCertificateDtoList.length);
+
+        let rowLine = document.createElement('tr');
+        document.querySelector('.certificate').appendChild(rowLine);
+
+        for(let j = 0; j < step; j++) {
+            console.log(CERTIFICATES._embedded.giftCertificateDtoList.length);
+
+            let rowPosition = document.createElement('tr');
+
+            // rowPosition.innerHTML = ``
+            let rowImage = document.createElement('tr');
+            rowImage.innerHTML = `<td><img src="../image/icon-certificate.png" class="size-icon-large"></td>`;
+            document.querySelector('.certificate').appendChild(rowImage);
+
+            let rowName = document.createElement('tr');
+            rowName.innerHTML = `<td colspan="2">${CERTIFICATES._embedded.giftCertificateDtoList[i + j].name}</td>`;
+            document.querySelector('.certificate').appendChild(rowName);
+
+            let rowPrice = document.createElement('tr');
+            rowPrice.innerHTML = `<td><h1>${CERTIFICATES._embedded.giftCertificateDtoList[i + j].price}</h1></td>`;
+            document.querySelector('.certificate').appendChild(rowPrice);
+
+            let rowButton = document.createElement('tr');
+            rowButton.innerHTML = `<td><input type="submit" value="Add to basket" class="button-add-to-basket"></td>`;
+            document.querySelector('.certificate').appendChild(rowButton);
+
+
+            document.querySelector('.certificate').appendChild(rowPosition);
+        }
+    }
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function checkCountElementInRow() {
+//     console.log('checkCountElementInRow');
+//     if (countPosition <= 3) {
+//         countPosition++;
+//         let rowElementInRow = document.createElement('td');
+//         rowElementInRow.innerHTML = `<td>`
+//     }
+// }
+//
+// function finishPositionElementInRow() {
+//         countPosition++;
+//         console.log('finishPositionElementInRow', countPosition);
+//         let rowElementInRow = document.createElement('td');
+//         rowElementInRow.innerHTML = `</td>`
+//         document.querySelector('.certificate').appendChild(rowElementInRow);
+//     }
+//
+//
+// function startNewRow() {
+//     console.log('startNewRow', countPosition);
+//     if (countPosition === 3) {
+//         let row = document.createElement('tr');
+//         document.querySelector('.certificate').appendChild(row);
+//         countElementInRow = 1;
+//     } else if (countPosition <= 3) {
+//         checkCountElementInRow();
+//     }
+// }
 
 
 
