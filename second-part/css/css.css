@@ -1,9 +1,28 @@
-#list {
-    padding: 12px 0;
+.list-certificates {
+
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    width: 300px;
 }
+.list-certificates-content-img {
+    width: 90%;
+    margin: 5px;
+}
+
+.list-certificates-content-div {
+    color: black;
+    border: 5px dotted grey;
+    margin: 10px;
+    width: 80%;
+}
+
+
+/*#list {*/
+/*    padding: 12px 0;*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*    justify-content: center;*/
+/*}*/
 .item {
     margin: 5px;
     height: 400px;
@@ -22,7 +41,6 @@
 .hidden {
     display: none;
 }
-
 
 .search-by-tag-placeholder-setting {
     width: 200px;
