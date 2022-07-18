@@ -18,3 +18,83 @@ div {
 .form {
      width: 300px;
  }
+
+/*scrollTop*/
+html {
+    scroll-behavior: smooth;
+}
+
+.scrollTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 10px 15px;
+    background-color: #000;
+    color: red;
+    border-radius: 5px;
+    /*border-radius: 1px solid #fff;*/
+    cursor: pointer;
+    transition: all 0.5s ease 0s;
+}
+.scrollTop:hover {
+    background-color: #4CAF50;
+    color: #000;
+}
+
+.scrollBack {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    padding: 10px 15px;
+    background-color: #000;
+    color: red;
+    border-radius: 5px;
+    /*border-radius: 1px solid #fff;*/
+    cursor: pointer;
+    transition: all 0.5s ease 0s;
+}
+
+.scrollBack:hover {
+    background-color: #4CAF50;
+    color: #000;
+}
+
+
+/*#scrollTop {*/
+/*    position: fixed;*/
+/*    bottom: 150px;*/
+/*    right: 70px;*/
+/*    font-size: 40px;*/
+/*    z-index: 9999;*/
+/*}*/
+/*.isShowButton {*/
+/*    opacity: 1;*/
+/*    transition: .4s;*/
+/*}*/
+
+/*.isShowButton_hide {*/
+/*    opacity: 0;*/
+/*}*/
+
+
+/**
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 80px;
+    background: #E3E6F3;
+    box-shadow: 0 50px 15px rgba(0, 0, 0, 0.06);
+}
+
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#navbar li {
+    list-style: none;
+    padding: 0 20px;
+}
+ */

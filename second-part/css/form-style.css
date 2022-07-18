@@ -25,6 +25,25 @@
     margin: 0 auto;
     top: calc(50% - 250px);
 }
+#add-certificate-form input{
+    width: 90%;
+    height: 30px;
+    margin: 5px auto;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+}
+#add-certificate-form button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px;
+}
 .certificate-description-form {
     width: 700px;
     height: 500px;

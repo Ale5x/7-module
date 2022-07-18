@@ -9,6 +9,29 @@
     <link rel="stylesheet" type="text/css" href="../css/table-style.css">
 </head>
 <body>
+
+<section id="header">
+    <input type="checkbox" id="side-checkbox" />
+    <div class="side-panel">
+        <label class="side-button-2" for="side-checkbox">+</label>
+        <div class="side-title">Navigation:</div>
+        <p><a href="basket.html">Basket</a></p>
+        <p><a href="create-certificate.html">Add The Certificate</a></p>
+    </div>
+    <div class="side-button-1-wr">
+        <label class="side-button-1" for="side-checkbox">
+            <img src="../image/image-menu.png" class="size-icon-menu">
+        </label>
+    </div>
+    <div>
+        <ui id="navbar">
+            <li><a href="login.html"><img src="../image/icon-login.png" title="Login in" class="size-icon-small"></a></li>
+            <li><a href="registration.html"><img src="../image/icon-registration.png" title="Registration" class="size-icon-small"></a></li>
+            <li><a href="basket.html"><img src="../image/icon-basket.png" title="Basket" class="size-icon-small"></a></li>
+        </ui>
+    </div>
+</section>
+
 <h1 class="align-text-center">User</h1>
 <main>
     <form id="form">
@@ -21,19 +44,22 @@
     <div id="list"></div>
     <img id="next-page" class="hidden" src="../image/loader.gif" width="80px"/>
 </main>
+<form id="list-certificates">
+    <div>
+        <img src="../image/orange.jpg">
+        <h1> Some text</h1>
+    </div>
+    <div>
+        <img src="../image/orange.jpg">
+        <h1> Some text</h1>
+    </div>
+    <div>
+        <img src="../image/orange.jpg">
+        <h1> Some text</h1>
+    </div>
+</form>
 
-<!--<form class="login-form">-->
-<!--    <div id=certificates">-->
-<!--        <script src="../js/index.js"></script>-->
-<!--    </div>-->
-<!--</form>-->
 
-<div class="list-certificates">
-    <script src="../js/index.js"></script>
-</div>
 
-<!--<div class="content">-->
-<!--    <script src="../js/index.js">start()</script>-->
-<!--</div>-->
 </body>
 </html>

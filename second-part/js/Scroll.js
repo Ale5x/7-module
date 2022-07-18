@@ -297,6 +297,7 @@ function init() {
 
 window.addEventListener("scroll", () => {
     if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
+        console.log('scroll => page ->', page);
         page++;
         init()
     }
@@ -308,3 +309,34 @@ form.addEventListener('submit', (event) => {
     page = 1;
     init();
 });
+
+let scrollPositionY;
+function scrollToTop() {
+    window.scrollTo(0,0)
+    scrollPositionY = window.scrollY;
+    console.log('position', scrollPositionY)
+}
+
+function scrollToBack() {
+    window.scrollTo(0,scrollPositionY)
+}
+
+
+
+// // const scrollButton = document.querySelector('.isShowButton');
+// const scrollButton = document.getElementById('.isShowButton');
+// window.onscroll = () => {
+//     console.log('Start scroll for up');
+//     if(window.scrollY > 700) {
+//         console.log('remove(isShowButton_hide')
+//         // scrollButton.classList.remove('isShowButton_hide')
+//     } else {
+//         console.log('add(isShowButton_hide')
+//         // scrollButton.classList.add('isShowButton_hide')
+//     }
+// };
+//
+// scrollButton.onclick = () => {
+//     console.log('Onclick scroll for up');
+//     window.scrollTo(0, 0);
+// };

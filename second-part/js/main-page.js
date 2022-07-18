@@ -245,6 +245,7 @@ localStorage.setItem('certificateByName', localCertificateByName.toString());
 
 const container = document.querySelector('.list-certificates');
 const nextPage = document.querySelector('next-page');
+let scrollPositionY;
 let page = 1;
 let form = document.getElementById('form');
 let tagName = document.getElementById('tag-name');
@@ -254,6 +255,7 @@ let certificateName = document.getElementById('certificate-name');
 function loadImages(certificates) {
     let countCertificates = 9;
     let i = 0;
+    console.log('Load...');
     while (i < countCertificates) {
         const div = document.createElement('div')
         div.innerHTML = `
@@ -293,6 +295,7 @@ function init() {
     } else if (tagName.value != null && tagName.value !== "") {
         getCertificateByTag(tagName.value)
     } else {
+        console.log('initCertificates');
         initCertificates()
     }
 }
@@ -300,6 +303,7 @@ function init() {
 window.addEventListener("scroll", () => {
     if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
         page++;
+        console.log('scroll => page ->', page);
         init()
     }
 })
@@ -310,3 +314,13 @@ form.addEventListener('submit', (event) => {
     page = 1;
     init();
 });
+
+function scrollToTop() {
+    window.scrollTo(0,0)
+    scrollPositionY = window.scrollY;
+    console.log('position', scrollPositionY)
+}
+
+function scrollToBack() {
+    window.scrollTo(0,scrollPositionY)
+}

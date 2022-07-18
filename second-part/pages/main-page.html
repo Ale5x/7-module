@@ -13,16 +13,20 @@
     <form class="align-text-center" id="form">
         <table class="align-content-center">
             <tr>
-                <td><input type="text" placeholder="Enter tag name" class="search-by-tag-placeholder-setting" id="tag-name"></td>
+                <td><input type="search" placeholder="Enter tag name" class="search-by-tag-placeholder-setting" id="tag-name"></td>
                 <td><input type="submit" value="Find" class="button-search-certificate"></td>
-                <td><input type="text" placeholder="Enter Certificate name" class="search-by-tag-placeholder-setting" id="certificate-name"></td>
+                <td><input type="search" placeholder="Enter Certificate name" class="search-by-tag-placeholder-setting" id="certificate-name"></td>
                 <td><input type="submit" value="Find" class="button-search-certificate"></td>
             </tr>
         </table>
     </form>
 
-    <form class="list-certificates">
+    <button type="button" onclick="scrollToTop()" class="scrollTop">Top</button>
+    <button type="button" onclick="scrollToBack()" class="scrollBack">Back</button>
+
+    <form class="list-certificates" id="list-certificates">
     </form>
+
     <img id="next-page" class="hidden" src="../image/loader.gif" width="100px"/>
 </main>
 
