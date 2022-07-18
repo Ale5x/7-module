@@ -5,14 +5,23 @@ html {
     display: flex;
     flex-wrap: wrap;
     color: grey;
-    width: 1300px;
-
+    width: 85%;
     position: absolute;
-    left: calc(50% - 850px);
+    left: 4%;
     right: 0;
     margin: 0 auto;
-    top: calc(50% - 400px);
+    top: calc(50% - 200px);
 
+
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+    /*color: grey;*/
+    /*width: 1300px;*/
+    /*position: absolute;*/
+    /*left: calc(50% - 850px);*/
+    /*right: 0;*/
+    /*margin: 0 auto;*/
+    /*top: calc(50% - 400px);*/
 }
 #list-certificates img {
     width: 70%;
@@ -23,13 +32,13 @@ html {
     color: black;
     border: 5px dotted grey;
     margin: 10px;
-    width: 400px;
+    width: 30%;
 }
 
 .scrollTop {
     position: fixed;
     bottom: 30px;
-    right: 30px;
+    right: 20px;
     padding: 10px 15px;
     background-color: #000;
     color: red;

@@ -24,6 +24,13 @@ html {
     scroll-behavior: smooth;
 }
 
+.isShowBtn {
+    opacity: 0;
+}
+.isShowBtn:hover {
+    opacity: 1;
+}
+
 .scrollTop {
     position: fixed;
     bottom: 30px;

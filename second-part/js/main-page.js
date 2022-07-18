@@ -255,11 +255,11 @@ let certificateName = document.getElementById('certificate-name');
 function loadImages(certificates) {
     let countCertificates = 9;
     let i = 0;
-    console.log('Load...');
     while (i < countCertificates) {
         const div = document.createElement('div')
         div.innerHTML = `
             <img src="../image/icon-certificate.png" class="list-certificates-content-img">
+            <h4>ID: ${certificates._embedded.giftCertificateDtoList[i].giftCertificateDtoId}</h4>
             <h2>${certificates._embedded.giftCertificateDtoList[i].name}</h2>
             <h1>${certificates._embedded.giftCertificateDtoList[i].price}$</h1>
           
@@ -295,7 +295,6 @@ function init() {
     } else if (tagName.value != null && tagName.value !== "") {
         getCertificateByTag(tagName.value)
     } else {
-        console.log('initCertificates');
         initCertificates()
     }
 }

@@ -324,12 +324,12 @@ function scrollToBack() {
 
 
 // // const scrollButton = document.querySelector('.isShowButton');
-// const scrollButton = document.getElementById('.isShowButton');
+// const scrollButton = document.getElementById('.isShowBtn');
 // window.onscroll = () => {
 //     console.log('Start scroll for up');
 //     if(window.scrollY > 700) {
 //         console.log('remove(isShowButton_hide')
-//         // scrollButton.classList.remove('isShowButton_hide')
+//         scrollButton.classList.remove('isShowBtn:hover')
 //     } else {
 //         console.log('add(isShowButton_hide')
 //         // scrollButton.classList.add('isShowButton_hide')
