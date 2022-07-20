@@ -1,3 +1,4 @@
+
 const localCertificates = {
     "_embedded": {
         "giftCertificateDtoList": [
@@ -258,8 +259,9 @@ function loadImages(certificates) {
         const div = document.createElement('div')
         div.innerHTML = `
             <img src="../image/icon-certificate.png">
-            <h2>${certificates._embedded.giftCertificateDtoList[i].name}</h2>
-            <h1>${certificates._embedded.giftCertificateDtoList[i].price}$</h1>
+            <h4>ID: ${certificates.giftCertificateDtoList[i].giftCertificateDtoId}</h4>
+            <h2>${certificates.giftCertificateDtoList[i].name}</h2>
+            <h1>${certificates.giftCertificateDtoList[i].price}$</h1>
           
             <input type="submit" value="Add to basket" class="button-add-to-basket">
          `
@@ -280,9 +282,158 @@ function getCertificateByName(name) {
     loadImages(localCertificateByName)
 }
 
-function initCertificates() {
-    // const certificatesList = localStorage.getItem('certificates');
-    loadImages(localCertificates)
+import {getDao, getTestExport, getMapperDate} from './dao.js';
+
+async function initCertificates() {
+    const url = "http://localhost:8080/store/certificate/getAllCertificates?page=1&size=9";
+    const data = await getDao(url);
+    const content = getMapperDate(data)
+    loadImages(content)
+}
+
+async function getResponse() {
+    console.log("Start...")
+    let content = ""
+    // let response = await fetch("http://localhost:8080/store/certificate/getAllCertificates?page=1&size=9");
+    // let content = await response.json();
+    // console.log("content", content)
+    console.log("Finish...")
+    // console.log("id-> ", content._embedded.giftCertificateDtoList[2].giftCertificateDtoId)
+    // console.log("Item-> ", content._embedded.giftCertificateDtoList)
+    const promise = function () {
+        new Promise(async function (resolve, reject) {
+            console.log("Promise preparing")
+            let response = await fetch("http://localhost:8080/store/certificate/getAllCertificates?page=1&size=9");
+            resolve(response.json());
+        });
+        promise.then((data) => {
+            content = data.giftCertificateDtoList
+            console.log("test 1", content)
+        })
+    }
+    console.log("test 2", content)
+}
+
+
+
+
+
+
+function getData1() {
+    let xhr = new XMLHttpRequest();
+    const url = "http://localhost:8080/store/certificate/getAllCertificates?page=1&size=9";
+    const urlTest = "https://reqres.in/api/users";
+
+
+
+
+
+    // xhr.onreadystatechange = function () {
+    //     myFunction(this.responseText)
+    // }
+    //
+    // xhr.open("GET", url, true)
+    // // xhr.setRequestHeader("Access-Control-Allow-Origin", "*")
+    // // xhr.setRequestHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-type, Accept")
+    // xhr.send()
+    //
+    // function myFunction(data) {
+    //     // console.log("log", data)
+    //     return data
+    // }
+
+
+
+
+    // var
+   const getResource = async (url) => {
+        const response = await fetch(url
+            , {
+            //     // mode: 'no-cors',
+                method: "get",
+            //     headers: {
+            //         "Content-Type": "application/json",
+            //         'Access-Control-Allow-Origin':'*',
+            //         'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'
+            //     },
+            }
+        )
+       if (response.ok) {
+           console.log("Status ok")
+           return await response.json()
+       } else {
+           console.log("Status not ok")
+       }
+       console.log(response)
+   }
+
+    return getResource(url)
+
+
+
+
+    /*
+    fetch(url, {
+        mode: 'no-cors',
+        method: "get",
+        headers: {
+            "Content-Type": "application/json"
+        },})
+     */
+    // fetch(url)
+    // // fetch('https://jsonplaceholder.typicode.com/todos/1')
+    //     .then(result => result)
+    //     .then((output) => {
+    //         console.log('Output: ', output);
+    //
+    //     }).catch(err => console.error(err));
+    //
+    // async function getDss() {
+    //     const response = await fetch(url
+    //         , {
+    //         // mode: 'no-cors',
+    //             method: "get",
+    //             headers: {
+    //             "Content-Type": "application/json"
+    //         },})
+    //     return  await response.json()
+    // }
+    //
+    // getDss()
+
+    // fetch(url )
+    // fetch("https://reqres.in/api/users")
+        // , {
+        // mode: 'no-cors',
+        // method: "get",
+        // headers: {
+        //     "Content-Type": "application/json"
+        // },
+    // })
+    // .then(res => {
+    //     if (res.ok) {
+    //         console.log("Succesful")
+    //     } else {
+    //         console.log("Error")
+    //     }
+    //     // console.log(res.json())
+    // })
+    //     .then(data => console.log(data))
+
+    // xhr.open('GET', url);
+    // xhr.responseType = 'json';
+    //
+    // xhr.onload = function() {
+    //     alert(`Loaded: ${xhr.status} ${xhr.response}`);
+    // };
+
+    // fetch(url)
+    //     .then(function(response) {
+    //         return response.json();
+    //     })
+    //     .then(function(myJson) {
+    //         console.log(JSON.stringify(myJson));
+    //     });
 }
 
 function init() {

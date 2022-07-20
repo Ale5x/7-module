@@ -245,11 +245,13 @@ localStorage.setItem('certificateByName', localCertificateByName.toString());
 
 const container = document.querySelector('.list-certificates');
 const nextPage = document.querySelector('next-page');
+const requestUrl = "http://localhost:8085/online_store/store/certificate/getAllCertificates?page=1&size=9";
 let scrollPositionY;
 let page = 1;
 let form = document.getElementById('form');
 let tagName = document.getElementById('tag-name');
 let certificateName = document.getElementById('certificate-name');
+
 
 
 function loadImages(certificates) {
@@ -285,8 +287,9 @@ function getCertificateByName(name) {
 }
 
 function initCertificates() {
-    // const certificatesList = localStorage.getItem('certificates');
-    loadImages(localCertificates)
+    const certificatesList = localStorage.getItem('certificates');
+    console.log("Result:", certificatesList)
+        loadImages(certificatesList)
 }
 
 function init() {
