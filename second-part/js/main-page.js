@@ -237,6 +237,7 @@ const localCertificateByName = {
             "type": "GET"
         }
     }
+    // }
 };
 
 localStorage.setItem('certificates', localCertificates.toString());

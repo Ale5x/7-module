@@ -288,6 +288,7 @@ async function initCertificates() {
     const url = "http://localhost:8080/store/certificate/getAllCertificates?page=1&size=9";
     const data = await getDao(url);
     const content = getMapperDate(data)
+    // const content = getMapperDate(data)
     loadImages(content)
 }
 

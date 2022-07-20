@@ -122,6 +122,7 @@ const CERTIFICATES = {
         }
     }
 };
+// };
 
 const list = document.getElementById('list');
 const search = document.getElementById('search');
