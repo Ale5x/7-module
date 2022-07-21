@@ -124,158 +124,167 @@ const CERTIFICATES = {
 };
 // };
 
-const list = document.getElementById('list');
-const search = document.getElementById('search');
-const form = document.getElementById('form');
-const nextPage = document.getElementById('next-page');
-let page = 1;
-
-function showCertificates(searchStr) {
-    console.log("showCertificates");
-    console.log("search", searchStr);
-    let data = CERTIFICATES._embedded.giftCertificateDtoList;
-    console.log("data size -> ", data.length)
-    build(data);
-    console.log('hidden...')
-    nextPage.classList.toggle('hidden', !(data.length > 9))
-}
-
-
+// const list = document.getElementById('list');
+// const search = document.getElementById('search');
+// const form = document.getElementById('form');
+// const nextPage = document.getElementById('next-page');
+// let page = 1;
+//
+// function showCertificates(searchStr) {
+//     console.log("showCertificates");
+//     console.log("search", searchStr);
+//     let data = CERTIFICATES._embedded.giftCertificateDtoList;
+//     console.log("data size -> ", data.length)
+//     build(data);
+//     console.log('hidden...')
+//     nextPage.classList.toggle('hidden', !(data.length > 9))
+// }
+//
+//
+// // function build(data) {
+// //     console.log("start builder...")
+// //     document.querySelector('.list-certificates').innerHTML = `<table class="certificates"></table>`;
+// //
+// //     let step = 3;
+// //     for (let i = 0; data.length; i = i + step) {
+// //
+// //         let divElement = document.createElement('div');
+// //         divElement.innerHTML = `
+// //          <div>
+// //              <table>
+// //                 <tr>
+// //                     <td>
+// //                         <table class="size-table-for-certificate">
+// //                             <tr>
+// //                                 <td colspan="2">
+// //                                     <a href="description-certificate.html"><img src="../image/icon-certificate.png" class="size-icon-large"></a>
+// //                                 </td>
+// //                             </tr>
+// //                             <tr>
+// //                                 <td colspan="2">
+// //                                     <h3>${data[i].name}</h3>
+// //                                 </td>
+// //                             </tr>
+// //                             <tr>
+// //                                 <td colspan="2">
+// //                                     <h2>Price: ${data[i].price}</h2>
+// //                                 </td>
+// //                             </tr>
+// //                             <tr>
+// //                                 <td>
+// //                                     <input type="submit" value="Add to basket" class="button-add-to-basket">
+// //                                 </td>
+// //                             </tr>
+// //                         </table>
+// //                     </td>
+// //
+// //
+// // <!--                    2 section-->
+// //
+// //                     <td>
+// //                         <table class="size-table-for-certificate">
+// //                             <tr>
+// //                                 <td colspan="2">
+// //                                     <a href="description-certificate.html"><img src="../image/icon-certificate.png" class="size-icon-large"></a>
+// //                                 </td>
+// //                             </tr>
+// //                             <tr>
+// //                                 <td colspan="2">
+// //                                     <h3>${data[i + 1].name}</h3>
+// //                                 </td>
+// //                             </tr>
+// //                             <tr>
+// //                                 <td colspan="2">
+// //                                     <h2>Price: ${data[i + 1].price}</h2>
+// //                                 </td>
+// //                             </tr>
+// //                             <tr>
+// //                                 <td>
+// //                                     <input type="submit" value="Add to basket" class="button-add-to-basket">
+// //                                 </td>
+// //                             </tr>
+// //                         </table>
+// //                     </td>
+// //
+// // <!--                    3 section-->
+// //
+// //                     <td>
+// //                         <table class="size-table-for-certificate">
+// //                             <tr>
+// //                                 <td colspan="2">
+// //                                     <a href="description-certificate.html"><img src="../image/icon-certificate.png" class="size-icon-large"></a>
+// //                                 </td>
+// //                             </tr>
+// //                             <tr>
+// //                                 <td colspan="2">
+// //                                     <h3>${data[i + 1].name}</h3>
+// //                                 </td>
+// //                             </tr>
+// //                             <tr>
+// //                                 <td colspan="2">
+// //                                     <h2>Price: ${data[i + 1].price}</h2>
+// //                                 </td>
+// //                             </tr>
+// //                             <tr>
+// //                                 <td>
+// //                                     <input type="submit" value="Add to basket" class="button-add-to-basket">
+// //                                 </td>
+// //                             </tr>
+// //                         </table>
+// //                     </td>
+// //                 </tr>
+// //              </table>
+// //         </div`;
+// //
+// //         document.querySelector('.certificates').appendChild(divElement)
+// //     }
+// // }
+//
 // function build(data) {
 //     console.log("start builder...")
-//     document.querySelector('.list-certificates').innerHTML = `<table class="certificates"></table>`;
+//     // const newElement = data.results.map((item) => {
+//     //     const newContainer = document.createElement('div');
+//     //     newContainer.classList.add('item');
+//     //     const img = document.createElement('img');
+//     //     img.setAttribute('src', "../image/icon-certificate.png");
+//     //     newContainer.appendChild(img);
+//     //     return newContainer;
+//     // });
+//     //
+//     // newElement.forEach(element => {
+//     //     list.appendChild(element);
+//     // });
 //
-//     let step = 3;
-//     for (let i = 0; data.length; i = i + step) {
-//
-//         let divElement = document.createElement('div');
-//         divElement.innerHTML = `
-//          <div>
-//              <table>
-//                 <tr>
-//                     <td>
-//                         <table class="size-table-for-certificate">
-//                             <tr>
-//                                 <td colspan="2">
-//                                     <a href="description-certificate.html"><img src="../image/icon-certificate.png" class="size-icon-large"></a>
-//                                 </td>
-//                             </tr>
-//                             <tr>
-//                                 <td colspan="2">
-//                                     <h3>${data[i].name}</h3>
-//                                 </td>
-//                             </tr>
-//                             <tr>
-//                                 <td colspan="2">
-//                                     <h2>Price: ${data[i].price}</h2>
-//                                 </td>
-//                             </tr>
-//                             <tr>
-//                                 <td>
-//                                     <input type="submit" value="Add to basket" class="button-add-to-basket">
-//                                 </td>
-//                             </tr>
-//                         </table>
-//                     </td>
-//
-//
-// <!--                    2 section-->
-//
-//                     <td>
-//                         <table class="size-table-for-certificate">
-//                             <tr>
-//                                 <td colspan="2">
-//                                     <a href="description-certificate.html"><img src="../image/icon-certificate.png" class="size-icon-large"></a>
-//                                 </td>
-//                             </tr>
-//                             <tr>
-//                                 <td colspan="2">
-//                                     <h3>${data[i + 1].name}</h3>
-//                                 </td>
-//                             </tr>
-//                             <tr>
-//                                 <td colspan="2">
-//                                     <h2>Price: ${data[i + 1].price}</h2>
-//                                 </td>
-//                             </tr>
-//                             <tr>
-//                                 <td>
-//                                     <input type="submit" value="Add to basket" class="button-add-to-basket">
-//                                 </td>
-//                             </tr>
-//                         </table>
-//                     </td>
-//
-// <!--                    3 section-->
-//
-//                     <td>
-//                         <table class="size-table-for-certificate">
-//                             <tr>
-//                                 <td colspan="2">
-//                                     <a href="description-certificate.html"><img src="../image/icon-certificate.png" class="size-icon-large"></a>
-//                                 </td>
-//                             </tr>
-//                             <tr>
-//                                 <td colspan="2">
-//                                     <h3>${data[i + 1].name}</h3>
-//                                 </td>
-//                             </tr>
-//                             <tr>
-//                                 <td colspan="2">
-//                                     <h2>Price: ${data[i + 1].price}</h2>
-//                                 </td>
-//                             </tr>
-//                             <tr>
-//                                 <td>
-//                                     <input type="submit" value="Add to basket" class="button-add-to-basket">
-//                                 </td>
-//                             </tr>
-//                         </table>
-//                     </td>
-//                 </tr>
-//              </table>
-//         </div`;
-//
-//         document.querySelector('.certificates').appendChild(divElement)
-//     }
+//     const newContainer = document.createElement('div');
+//         newContainer.classList.add('item');
+//         const img = document.createElement('img');
+//         img.setAttribute('src', "../image/icon-certificate.png");
+//         newContainer.appendChild(img);
 // }
+//
+//
+// form.addEventListener('submit', (event) => {
+//     console.log("addEventListener")
+//     event.preventDefault();
+//     list.innerHTML = "";
+//     page = 1;
+//     showCertificates(search.value);
+// });
+//
+// window.addEventListener("scroll", () => {
+//     const documentRect = document.documentElement.getBoundingClientRect();
+//     if (documentRect.bottom < document.documentElement.clientHeight + 150) {
+//         console.log('Scroll...')
+//         page++;
+//         showCertificates(search.value)
+//     }
+// })
 
-function build(data) {
-    console.log("start builder...")
-    // const newElement = data.results.map((item) => {
-    //     const newContainer = document.createElement('div');
-    //     newContainer.classList.add('item');
-    //     const img = document.createElement('img');
-    //     img.setAttribute('src', "../image/icon-certificate.png");
-    //     newContainer.appendChild(img);
-    //     return newContainer;
-    // });
-    //
-    // newElement.forEach(element => {
-    //     list.appendChild(element);
-    // });
-
-    const newContainer = document.createElement('div');
-        newContainer.classList.add('item');
-        const img = document.createElement('img');
-        img.setAttribute('src', "../image/icon-certificate.png");
-        newContainer.appendChild(img);
+// import {builderUrl} from './url.js'
+import {getBuilderUrl, getCharAnd, getCharStartParameter, getParameter} from './url.js'
+function f() {
+    let params = new URLSearchParams(window.location.search);
+    const parameter = 'params1';
+    console.log("params - ", getParameter(parameter, params))
 }
-
-
-form.addEventListener('submit', (event) => {
-    console.log("addEventListener")
-    event.preventDefault();
-    list.innerHTML = "";
-    page = 1;
-    showCertificates(search.value);
-});
-
-window.addEventListener("scroll", () => {
-    const documentRect = document.documentElement.getBoundingClientRect();
-    if (documentRect.bottom < document.documentElement.clientHeight + 150) {
-        console.log('Scroll...')
-        page++;
-        showCertificates(search.value)
-    }
-})
+f()

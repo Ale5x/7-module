@@ -288,9 +288,9 @@ function getCertificateByName(name) {
 }
 
 function initCertificates() {
-    const certificatesList = localStorage.getItem('certificates');
-    console.log("Result:", certificatesList)
-        loadImages(certificatesList)
+    // const certificatesList = localStorage.getItem('certificates');
+    // console.log("Result:", certificatesList)
+        loadImages(localCertificates)
 }
 
 function init() {

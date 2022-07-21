@@ -258,13 +258,14 @@ function loadImages(certificates) {
     while (i < countCertificates) {
         const div = document.createElement('div')
         div.innerHTML = `
-            <img src="../image/icon-certificate.png">
-            <h4>ID: ${certificates.giftCertificateDtoList[i].giftCertificateDtoId}</h4>
-            <h2>${certificates.giftCertificateDtoList[i].name}</h2>
-            <h1>${certificates.giftCertificateDtoList[i].price}$</h1>
-          
-            <input type="submit" value="Add to basket" class="button-add-to-basket">
-         `
+             <img src="../image/icon-certificate.png">
+        `
+        //     <h4>ID: ${certificates.giftCertificateDtoList[i].giftCertificateDtoId}</h4>
+        //     <h2>${certificates.giftCertificateDtoList[i].name}</h2>
+        //     <h1>${certificates.giftCertificateDtoList[i].price}$</h1>
+        //
+        //     <input type="submit" value="Add to basket" class="button-add-to-basket">
+        //  `
         container.appendChild(div);
         i++;
     }
@@ -282,14 +283,15 @@ function getCertificateByName(name) {
     loadImages(localCertificateByName)
 }
 
-import {getDao, getTestExport, getMapperDate} from './dao.js';
+// import {getDao, getTestExport, getMapperDate} from './dao.js';
 
 async function initCertificates() {
     const url = "http://localhost:8080/store/certificate/getAllCertificates?page=1&size=9";
-    const data = await getDao(url);
-    const content = getMapperDate(data)
+    // const data = await getDao(url);
     // const content = getMapperDate(data)
-    loadImages(content)
+    // const content = getMapperDate(data)
+    loadImages(localCertificates)
+    // loadImages(content)
 }
 
 async function getResponse() {
@@ -439,8 +441,10 @@ function getData1() {
 
 function init() {
     if (certificateName.value != null && certificateName.value !== "") {
+        console.log('certificateName', certificateName.value);
         getCertificateByName(certificateName.value)
     } else if (tagName.value != null && tagName.value !== "") {
+        console.log('tagName', tagName.value);
         getCertificateByTag(tagName.value)
     } else {
         initCertificates()
@@ -453,7 +457,7 @@ window.addEventListener("scroll", () => {
         page++;
         init()
     }
-})
+});
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -462,17 +466,26 @@ form.addEventListener('submit', (event) => {
     init();
 });
 
+
+import {scrollToTop} from "./functions.js";
+
 let scrollPositionY;
-function scrollToTop() {
-    window.scrollTo(0,0)
-    scrollPositionY = window.scrollY;
-    console.log('position', scrollPositionY)
+function scrollToT() {
+    // window.scrollTo(0,0)
+    // scrollPositionY = window.scrollY;
+    // console.log('position', scrollPositionY)
+
+    console.log("Try to get scroll")
+    scrollPositionY = scrollToTop();
+    console.log("PositionY", scrollPositionY)
 }
 
 function scrollToBack() {
     window.scrollTo(0,scrollPositionY)
 }
 
+document.querySelector('#scrollToTop').addEventListener('click', scrollToT);
+document.querySelector('#scrollBack').addEventListener('click', scrollToBack);
 
 
 // // const scrollButton = document.querySelector('.isShowButton');
@@ -492,3 +505,13 @@ function scrollToBack() {
 //     console.log('Onclick scroll for up');
 //     window.scrollTo(0, 0);
 // };
+
+function test1() {
+    console.log("test start")
+
+}
+
+window.addEventListener("test", () => {
+        console.log('test', page);
+        page++;
+});
