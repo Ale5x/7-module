@@ -281,10 +281,10 @@ const CERTIFICATES = {
 // })
 
 // import {builderUrl} from './url.js'
-import {getBuilderUrl, getCharAnd, getCharStartParameter, getParameter} from './url.js'
-function f() {
-    let params = new URLSearchParams(window.location.search);
-    const parameter = 'params1';
-    console.log("params - ", getParameter(parameter, params))
-}
-f()
+// import {getBuilderUrl, getCharAnd, getCharStartParameter, getParameter} from './url.js'
+// function f() {
+//     let params = new URLSearchParams(window.location.search);
+//     const parameter = 'params1';
+//     console.log("params - ", getParameter(parameter, params))
+// }
+// f()

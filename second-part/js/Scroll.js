@@ -252,20 +252,19 @@ let tagName = document.getElementById('tag-name');
 let certificateName = document.getElementById('certificate-name');
 
 
-function loadImages(certificates) {
+function loadItems(certificates) {
     let countCertificates = 9;
     let i = 0;
     while (i < countCertificates) {
         const div = document.createElement('div')
         div.innerHTML = `
              <img src="../image/icon-certificate.png">
-        `
-        //     <h4>ID: ${certificates.giftCertificateDtoList[i].giftCertificateDtoId}</h4>
-        //     <h2>${certificates.giftCertificateDtoList[i].name}</h2>
-        //     <h1>${certificates.giftCertificateDtoList[i].price}$</h1>
-        //
-        //     <input type="submit" value="Add to basket" class="button-add-to-basket">
-        //  `
+             <h4>ID: ${certificates.giftCertificateDtoList[i].giftCertificateDtoId}</h4>
+             <h2>${certificates.giftCertificateDtoList[i].name}</h2>
+             <h1>${certificates.giftCertificateDtoList[i].price}$</h1>
+        
+             <input type="submit" value="Add to basket" class="button-add-to-basket">
+          `
         container.appendChild(div);
         i++;
     }
@@ -273,172 +272,75 @@ function loadImages(certificates) {
 
 init()
 
-function getCertificateByTag(name) {
-    // const certificates = localStorage.getItem('certificateByTag');
-    loadImages(localCertificateByTag)
+// async function getCountCertificates(url) {
+//     console.log("url check page ", url)
+//     const newUrl = "http://localhost:8080/store/certificate/getAllCertificates?page=10&size=1000"
+//     const data = await getDao(newUrl);
+//     // const content = getMapperDate(data)
+//     console.log("content for check page", data)
+//     console.log("empty list", data._embedded.giftCertificateDtoList.exsist)
+//
+// }
+
+async function getCertificateByTag(name) {
+    let url = "http://localhost:8080/store/certificate/getCertificatesByTagName"
+    let countItemInPage = 9;
+    let sizeConstant = "size";
+    let pageConstant = "page";
+    let nameConstant = "name";
+    let buildUrl = url + getCharStartParameter + getBuilderUrlParameter(pageConstant, page)
+        + getCharAnd + getBuilderUrlParameter(sizeConstant, countItemInPage) + getCharAnd
+        + getBuilderUrlParameter(nameConstant, name);
+
+    console.log("url tag name", buildUrl )
+    console.log("tag name", name )
+
+    const data = await getDao(buildUrl);
+    const content = getMapperDate(data)
+
+    console.log("content ", content)
+
+    loadItems(content)
 }
 
-function getCertificateByName(name) {
-    // const certificates = localStorage.getItem('certificateByName');
-    loadImages(localCertificateByName)
+async function getCertificateByName(name) {
+    let url = "http://localhost:8080/store/certificate/getCertificatesByPartName"
+    let countItemInPage = 9;
+    let sizeConstant = "size";
+    let pageConstant = "page";
+    let nameConstant = "name";
+    let buildUrl = url + getCharStartParameter + getBuilderUrlParameter(pageConstant, page)
+        + getCharAnd + getBuilderUrlParameter(sizeConstant, countItemInPage) + getCharAnd
+        + getBuilderUrlParameter(nameConstant, name);
+
+    const data = await getDao(buildUrl);
+    const content = getMapperDate(data)
+
+    loadItems(content)
 }
 
-// import {getDao, getTestExport, getMapperDate} from './dao.js';
+import {getDao, getMapperDate} from './dao.js';
+import {getCharStartParameter, getCharAnd, getBuilderUrlParameter} from './url.js'
 
 async function initCertificates() {
-    const url = "http://localhost:8080/store/certificate/getAllCertificates?page=1&size=9";
-    // const data = await getDao(url);
-    // const content = getMapperDate(data)
-    // const content = getMapperDate(data)
-    loadImages(localCertificates)
-    // loadImages(content)
+    let url = "http://localhost:8080/store/certificate/getAllCertificates"
+    let countItemInPage = 9;
+    let sizeConstant = "size";
+    let pageConstant = "page";
+    let buildUrl = url + getCharStartParameter + getBuilderUrlParameter(pageConstant, page)
+        + getCharAnd + getBuilderUrlParameter(sizeConstant, countItemInPage);
+
+    const data = await getDao(buildUrl);
+    const content = getMapperDate(data)
+
+    // nePage = page + 1;
+    // getCountCertificates(url + getCharStartParameter + getBuilderUrlParameter(pageConstant, nePage)
+    //     + getCharAnd + getBuilderUrlParameter(sizeConstant, countItemInPage))
+
+
+    loadItems(content)
 }
-
-async function getResponse() {
-    console.log("Start...")
-    let content = ""
-    // let response = await fetch("http://localhost:8080/store/certificate/getAllCertificates?page=1&size=9");
-    // let content = await response.json();
-    // console.log("content", content)
-    console.log("Finish...")
-    // console.log("id-> ", content._embedded.giftCertificateDtoList[2].giftCertificateDtoId)
-    // console.log("Item-> ", content._embedded.giftCertificateDtoList)
-    const promise = function () {
-        new Promise(async function (resolve, reject) {
-            console.log("Promise preparing")
-            let response = await fetch("http://localhost:8080/store/certificate/getAllCertificates?page=1&size=9");
-            resolve(response.json());
-        });
-        promise.then((data) => {
-            content = data.giftCertificateDtoList
-            console.log("test 1", content)
-        })
-    }
-    console.log("test 2", content)
-}
-
-
-
-
-
-
-function getData1() {
-    let xhr = new XMLHttpRequest();
-    const url = "http://localhost:8080/store/certificate/getAllCertificates?page=1&size=9";
-    const urlTest = "https://reqres.in/api/users";
-
-
-
-
-
-    // xhr.onreadystatechange = function () {
-    //     myFunction(this.responseText)
-    // }
-    //
-    // xhr.open("GET", url, true)
-    // // xhr.setRequestHeader("Access-Control-Allow-Origin", "*")
-    // // xhr.setRequestHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-type, Accept")
-    // xhr.send()
-    //
-    // function myFunction(data) {
-    //     // console.log("log", data)
-    //     return data
-    // }
-
-
-
-
-    // var
-   const getResource = async (url) => {
-        const response = await fetch(url
-            , {
-            //     // mode: 'no-cors',
-                method: "get",
-            //     headers: {
-            //         "Content-Type": "application/json",
-            //         'Access-Control-Allow-Origin':'*',
-            //         'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'
-            //     },
-            }
-        )
-       if (response.ok) {
-           console.log("Status ok")
-           return await response.json()
-       } else {
-           console.log("Status not ok")
-       }
-       console.log(response)
-   }
-
-    return getResource(url)
-
-
-
-
-    /*
-    fetch(url, {
-        mode: 'no-cors',
-        method: "get",
-        headers: {
-            "Content-Type": "application/json"
-        },})
-     */
-    // fetch(url)
-    // // fetch('https://jsonplaceholder.typicode.com/todos/1')
-    //     .then(result => result)
-    //     .then((output) => {
-    //         console.log('Output: ', output);
-    //
-    //     }).catch(err => console.error(err));
-    //
-    // async function getDss() {
-    //     const response = await fetch(url
-    //         , {
-    //         // mode: 'no-cors',
-    //             method: "get",
-    //             headers: {
-    //             "Content-Type": "application/json"
-    //         },})
-    //     return  await response.json()
-    // }
-    //
-    // getDss()
-
-    // fetch(url )
-    // fetch("https://reqres.in/api/users")
-        // , {
-        // mode: 'no-cors',
-        // method: "get",
-        // headers: {
-        //     "Content-Type": "application/json"
-        // },
-    // })
-    // .then(res => {
-    //     if (res.ok) {
-    //         console.log("Succesful")
-    //     } else {
-    //         console.log("Error")
-    //     }
-    //     // console.log(res.json())
-    // })
-    //     .then(data => console.log(data))
-
-    // xhr.open('GET', url);
-    // xhr.responseType = 'json';
-    //
-    // xhr.onload = function() {
-    //     alert(`Loaded: ${xhr.status} ${xhr.response}`);
-    // };
-
-    // fetch(url)
-    //     .then(function(response) {
-    //         return response.json();
-    //     })
-    //     .then(function(myJson) {
-    //         console.log(JSON.stringify(myJson));
-    //     });
-}
-
+// let nePage = 0;
 function init() {
     if (certificateName.value != null && certificateName.value !== "") {
         console.log('certificateName', certificateName.value);
@@ -447,7 +349,7 @@ function init() {
         console.log('tagName', tagName.value);
         getCertificateByTag(tagName.value)
     } else {
-        initCertificates()
+        initCertificates();
     }
 }
 
@@ -475,7 +377,6 @@ function scrollToT() {
     // scrollPositionY = window.scrollY;
     // console.log('position', scrollPositionY)
 
-    console.log("Try to get scroll")
     scrollPositionY = scrollToTop();
     console.log("PositionY", scrollPositionY)
 }
