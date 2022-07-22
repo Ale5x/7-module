@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>Scroll</title>
     <link rel="stylesheet" type="text/css" href="../css/test.css">
+    <link rel="stylesheet" type="text/css" href="../css/form-style.css">
+    <link rel="stylesheet" type="text/css" href="../css/button-style.css">
+    <link rel="stylesheet" type="text/css" href="../css/table-style.css">
 </head>
 <body>
 <h1>User</h1>
@@ -18,19 +21,21 @@
         <input type="submit" value="Найти">
     </form>
 
-    <button type="button" id="scrollToTop" class="scrollTop">Top</button>
-    <button type="button" id="scrollBack" class="scrollBack">Back</button>
+<!--    <button type="button" id="scrollToTop1" class="scrollTop1"><img src="../image/up-arrow.png" alt="up"></button>-->
+<!--&lt;!&ndash;    <button type="button" id="scrollToTop" class="scrollTop">Top</button>&ndash;&gt;-->
+<!--    <button type="button" id="scrollBack" class="scrollBack">Back</button>-->
 
 
+    <button type="button" id="scrollToTop" class="scrollTop"><img src="../image/up-arrow.png" alt="up"></button>
+    <button type="button" id="scrollBack" class="scrollBack"><img src="../image/down-arrow.png" alt="down"></button>
 
-    <form class="list-certificates">
-    </form>
+    <!--    <form class="list-certificates">-->
+    <!--    </form>-->
 </main>
+<img id="next-page" class="hidden"  src="../image/loader type2.gif">
+<form class="list-certificates" id="list-certificates"></form>
 
-<script type="module" src="../js/Scroll.js">
-   // document.querySelector('#scrollToTop').addEventListener('click', test1)
-
-</script>
+<script type="module" src="../js/Scroll.js"></script>
 <!--<span type="button" onclick="test1()">test</span>-->
 
 </body>

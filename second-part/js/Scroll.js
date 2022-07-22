@@ -259,9 +259,9 @@ function loadItems(certificates) {
         const div = document.createElement('div')
         div.innerHTML = `
              <img src="../image/icon-certificate.png">
-             <h4>ID: ${certificates.giftCertificateDtoList[i].giftCertificateDtoId}</h4>
-             <h2>${certificates.giftCertificateDtoList[i].name}</h2>
-             <h1>${certificates.giftCertificateDtoList[i].price}$</h1>
+             <h4>ID: ${certificates._embedded.giftCertificateDtoList[i].giftCertificateDtoId}</h4>
+             <h2>${certificates._embedded.giftCertificateDtoList[i].name}</h2>
+             <h1>${certificates._embedded.giftCertificateDtoList[i].price}$</h1>
         
              <input type="submit" value="Add to basket" class="button-add-to-basket">
           `
@@ -322,23 +322,25 @@ async function getCertificateByName(name) {
 import {getDao, getMapperDate} from './dao.js';
 import {getCharStartParameter, getCharAnd, getBuilderUrlParameter} from './url.js'
 
-async function initCertificates() {
-    let url = "http://localhost:8080/store/certificate/getAllCertificates"
-    let countItemInPage = 9;
-    let sizeConstant = "size";
-    let pageConstant = "page";
-    let buildUrl = url + getCharStartParameter + getBuilderUrlParameter(pageConstant, page)
-        + getCharAnd + getBuilderUrlParameter(sizeConstant, countItemInPage);
-
-    const data = await getDao(buildUrl);
-    const content = getMapperDate(data)
+function initCertificates() {
+// async function initCertificates() {
+    // let url = "http://localhost:8080/store/certificate/getAllCertificates"
+    // let countItemInPage = 9;
+    // let sizeConstant = "size";
+    // let pageConstant = "page";
+    // let buildUrl = url + getCharStartParameter + getBuilderUrlParameter(pageConstant, page)
+    //     + getCharAnd + getBuilderUrlParameter(sizeConstant, countItemInPage);
+    //
+    // const data = await getDao(buildUrl);
+    // const content = getMapperDate(data)
 
     // nePage = page + 1;
     // getCountCertificates(url + getCharStartParameter + getBuilderUrlParameter(pageConstant, nePage)
     //     + getCharAnd + getBuilderUrlParameter(sizeConstant, countItemInPage))
 
-
-    loadItems(content)
+    console.log("Tag name:", tagName.value);
+    console.log("Certificate name:", certificateName.value);
+    loadItems(localCertificates)
 }
 // let nePage = 0;
 function init() {
@@ -357,6 +359,8 @@ window.addEventListener("scroll", () => {
     if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
         console.log('scroll => page ->', page);
         page++;
+        const documentReact = document.documentElement.getBoundingClientRect();
+        if (documentReact < document.documentElement)
         init()
     }
 });
@@ -373,9 +377,6 @@ import {scrollToTop} from "./functions.js";
 
 let scrollPositionY;
 function scrollToT() {
-    // window.scrollTo(0,0)
-    // scrollPositionY = window.scrollY;
-    // console.log('position', scrollPositionY)
 
     scrollPositionY = scrollToTop();
     console.log("PositionY", scrollPositionY)
@@ -389,30 +390,20 @@ document.querySelector('#scrollToTop').addEventListener('click', scrollToT);
 document.querySelector('#scrollBack').addEventListener('click', scrollToBack);
 
 
-// // const scrollButton = document.querySelector('.isShowButton');
-// const scrollButton = document.getElementById('.isShowBtn');
-// window.onscroll = () => {
-//     console.log('Start scroll for up');
-//     if(window.scrollY > 700) {
-//         console.log('remove(isShowButton_hide')
-//         scrollButton.classList.remove('isShowBtn:hover')
-//     } else {
-//         console.log('add(isShowButton_hide')
-//         // scrollButton.classList.add('isShowButton_hide')
-//     }
-// };
-//
-// scrollButton.onclick = () => {
-//     console.log('Onclick scroll for up');
-//     window.scrollTo(0, 0);
-// };
 
-function test1() {
-    console.log("test start")
+window.addEventListener('scroll', checkHeight);
 
+const goTopBtn = document.getElementById('scrollToTop');
+const goDownBtn = document.getElementById('scrollBack');
+
+function checkHeight() {
+    if (window.scrollY < 200) {
+        if (scrollPositionY > 200) {
+            goDownBtn.style.display = "flex";
+        }
+        goTopBtn.style.display = "none"
+    } else {
+        goTopBtn.style.display = 'flex';
+        goDownBtn.style.display = "none";
+    }
 }
-
-window.addEventListener("test", () => {
-        console.log('test', page);
-        page++;
-});

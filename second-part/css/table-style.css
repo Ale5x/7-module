@@ -28,10 +28,10 @@ thead {
     width: 300px;
     border: 2px dotted;
 }
-img {
-    width: 200px;
-    height: 200px;
-}
+/*img {*/
+/*    width: 200px;*/
+/*    height: 200px;*/
+/*}*/
 .basket-content-table {
     width: 90%;
     margin: 5px auto;
