@@ -1,4 +1,5 @@
-import {getParameter, getBuilderUrlParameter, getCharStartParameter} from "./url.js";
+import {getCharStartParameter, getBuilderUrlParameter, getRemoteHost, getApplicationName,
+    getSectionCertificste, getIdConstant, getParameter, getGetCertificate} from "./url.js";
 import {getDao} from './dao.js';
 
 let id = 1;
@@ -8,13 +9,9 @@ const container = document.querySelector('.certificate-description-form');
 init()
 
 function init() {
-    console.log("Starting...")
-    let url = new URLSearchParams(window.location.search)
-    console.log("url...", url)
-    console.log("url get id...", url.get('id'))
-    id = getParameter(idConstant, window.location.search);
-    console.log("id", getParameter(idConstant, url))
-    getCertificate(buildUrl(id))
+    let url = new URLSearchParams(window.location.search);
+    id = getParameter(getIdConstant, window.location.search);
+    getCertificate(buildUrl(id));
 }
 
 async function getCertificate(urlLine) {
@@ -23,15 +20,14 @@ async function getCertificate(urlLine) {
 }
 
 function buildUrl(id) {
-    let url = "http://localhost:8080/store/certificate/get"
-    return  url + getCharStartParameter + getBuilderUrlParameter(idConstant, id);
+    return  getRemoteHost + getSectionCertificste + getGetCertificate + getCharStartParameter + getBuilderUrlParameter(idConstant, id);
 }
 
 function loadItem(certificate) {
     if (certificate !== null){
         const div = document.createElement('div')
         div.innerHTML = `
-             <img src="../image/icon-certificate.png" class="size-icon-large">
+             <img src="../image/icon-certificate.png">
              <br>
              <b>ID:</b> ${certificate.giftCertificateDtoId}
              <br>

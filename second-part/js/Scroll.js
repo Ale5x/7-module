@@ -244,6 +244,12 @@ localStorage.setItem('certificates', localCertificates.toString());
 localStorage.setItem('certificateByTag', localCertificateByTag.toString());
 localStorage.setItem('certificateByName', localCertificateByName.toString());
 
+
+
+let val = document.getElementById('val');
+let cert = document.getElementById('cert');
+let tagss = document.getElementById('tagss');
+
 const container = document.querySelector('.list-certificates');
 const nextPage = document.querySelector('next-page');
 let page = 1;
@@ -295,12 +301,12 @@ async function getCertificateByTag(name) {
     console.log("url tag name", buildUrl )
     console.log("tag name", name )
 
-    const data = await getDao(buildUrl);
-    const content = getMapperDate(data)
+    // const data = await getDao(buildUrl);
+    // const content = getMapperDate(data)
 
     console.log("content ", content)
 
-    loadItems(content)
+    loadItems(localCertificates)
 }
 
 async function getCertificateByName(name) {
@@ -313,10 +319,10 @@ async function getCertificateByName(name) {
         + getCharAnd + getBuilderUrlParameter(sizeConstant, countItemInPage) + getCharAnd
         + getBuilderUrlParameter(nameConstant, name);
 
-    const data = await getDao(buildUrl);
-    const content = getMapperDate(data)
+    // const data = await getDao(buildUrl);
+    // const content = getMapperDate(data)
 
-    loadItems(content)
+    loadItems(localCertificates)
 }
 
 import {getDao, getMapperDate} from './dao.js';
@@ -343,16 +349,34 @@ function initCertificates() {
     loadItems(localCertificates)
 }
 // let nePage = 0;
+
+
+
 function init() {
-    if (certificateName.value != null && certificateName.value !== "") {
+    console.log("value", val.value)
+    console.log("cert", cert)
+    console.log("tagss", tagss)
+
+    if (form2 != null && certificateName.value !== "") {
         console.log('certificateName', certificateName.value);
         getCertificateByName(certificateName.value)
-    } else if (tagName.value != null && tagName.value !== "") {
+    } else if (form1 != null && tagName.value !== "") {
         console.log('tagName', tagName.value);
         getCertificateByTag(tagName.value)
     } else {
         initCertificates();
     }
+
+
+    // if (certificateName.value != null && certificateName.value !== "") {
+    //     console.log('certificateName', certificateName.value);
+    //     getCertificateByName(certificateName.value)
+    // } else if (tagName.value != null && tagName.value !== "") {
+    //     console.log('tagName', tagName.value);
+    //     getCertificateByTag(tagName.value)
+    // } else {
+    //     initCertificates();
+    // }
 }
 
 window.addEventListener("scroll", () => {
