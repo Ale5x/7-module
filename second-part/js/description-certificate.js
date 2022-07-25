@@ -15,7 +15,7 @@ function init() {
 }
 
 async function getCertificate(urlLine) {
-    const data = await getDao(urlLine);
+    const data = await getDao(urlLine, 'GET');
     loadItem(data);
 }
 

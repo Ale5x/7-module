@@ -1,18 +1,16 @@
-const functionHelper = {
-    scrollToTop: function () {
-        window.scrollTo(0,0);
-        console.log("function scroll")
-        return  window.scrollY;
-    },
-    test2: function () {
-        console.log("function test")
-    }
-};
-
-export const getScrollTop = functionHelper.scrollToTop();
-
 export function scrollToTop() {
     window.scrollTo(0,0);
-    console.log("function scroll")
     return  window.scrollY;
+}
+
+export function getCheckHeightScroll(goTopBtn, goDownBtn, scrollPositionY) {
+    if (window.scrollY < 200) {
+        if (scrollPositionY > 200) {
+            goDownBtn.style.display = "flex";
+        }
+        goTopBtn.style.display = "none";
+    } else {
+        goTopBtn.style.display = 'flex';
+        goDownBtn.style.display = "none";
+    }
 }

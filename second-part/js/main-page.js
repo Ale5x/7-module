@@ -1,5 +1,5 @@
-import {scrollToTop} from "./functions.js";
-import {getDao, getMapperDate} from './dao.js';
+import {scrollToTop, getCheckHeightScroll} from "./functions.js";
+import {getDao} from './dao.js';
 import {getCharStartParameter, getCharAnd, getBuilderUrlParameter, getRemoteHost, getApplicationName,
     getSectionCertificste, getPageConstant, getSizeConstant, getGetAllCertificates, getGetCertificatesByName,
     getGetCertificatesByTag, getNameConstant, getParameter} from './url.js';
@@ -35,7 +35,7 @@ function loadItems(certificates) {
              <h4>ID: ${certificates._embedded.giftCertificateDtoList[i].giftCertificateDtoId}</h4>
              <h2>${certificates._embedded.giftCertificateDtoList[i].name}</h2>
              <h1>${certificates._embedded.giftCertificateDtoList[i].price}$</h1>
-        
+             <hr>
              <input type="submit" value="Add to basket" class="button-add-to-basket">
           `
             container.appendChild(div);
@@ -85,7 +85,6 @@ function initUrlCertificateByName(name) {
 function initUrlCertificates() {
     let countItemInPage = 9;
 
-    // let buildUrl = "http://localhost:8080/store/user/get?page=2&size=10s
     let buildUrl = getRemoteHost + getSectionCertificste + getGetAllCertificates
         + getCharStartParameter + getBuilderUrlParameter(getPageConstant, page)
         + getCharAnd + getBuilderUrlParameter(getSizeConstant, countItemInPage);
@@ -125,7 +124,6 @@ form.addEventListener('submit', (event) => {
 
 function scrollToTopF() {
     scrollPositionY = scrollToTop();
-    console.log("PositionY", scrollPositionY)
 }
 
 function scrollToBackF() {
@@ -141,13 +139,5 @@ const goTopBtn = document.getElementById('scrollToTop');
 const goDownBtn = document.getElementById('scrollBack');
 
 function checkHeight() {
-    if (window.scrollY < 200) {
-        if (scrollPositionY > 200) {
-            goDownBtn.style.display = "flex";
-        }
-        goTopBtn.style.display = "none";
-    } else {
-        goTopBtn.style.display = 'flex';
-        goDownBtn.style.display = "none";
-    }
+    getCheckHeightScroll(goTopBtn, goDownBtn, scrollPositionY);
 }
