@@ -22,10 +22,8 @@ function getUrlFromLink(parameter, urlLine) {
 function loadItems(certificates) {
     let countCertificates = 9;
     let i = 0;
-
     let numberNextPage = getUrlFromLink(getPageConstant, certificates._links.Next.href);
     let numberPreviousPage = getUrlFromLink(getPageConstant, certificates._links.Previous.href);
-
     if (certificates._embedded != null) {
         while (i < countCertificates) {
             const div = document.createElement('div')
@@ -40,7 +38,7 @@ function loadItems(certificates) {
             container.appendChild(div);
             i++;
         }
-    } else if (certificates._embedded != null && numberNextPage >= 3){
+    } else if (certificates._embedded == null && numberNextPage >= 3){
         nextPage.style.display = "none";
     } else if (certificates._embedded == null && numberNextPage === 2){
         const div = document.createElement('div')
@@ -49,6 +47,9 @@ function loadItems(certificates) {
         nextPage.style.display = "none";
         page = 1;
         count++;
+    }
+    if (certificates._embedded != null && certificates._embedded < countCertificates) {
+        nextPage.style.display = "none";
     }
 }
 
