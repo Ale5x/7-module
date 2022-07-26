@@ -248,14 +248,12 @@ localStorage.setItem('certificateByName', localCertificateByName.toString());
 
 let val = document.getElementById('val');
 let cert = document.getElementById('cert');
-let tagss = document.getElementById('tagss');
 
 const container = document.querySelector('.list-certificates');
 const nextPage = document.querySelector('next-page');
 let page = 1;
-let form = document.getElementById('form');
-let tagName = document.getElementById('tag-name');
-let certificateName = document.getElementById('certificate-name');
+let form = document.getElementById('form-search-certificate');
+let name = document.getElementById('name');
 
 
 function loadItems(certificates) {
@@ -289,7 +287,7 @@ init()
 // }
 
 async function getCertificateByTag(name) {
-    let url = "http://localhost:8080/store/certificate/getCertificatesByTagName"
+    let url = "http://localhost:8080/store/certificate/getCertificatesByTagName";
     let countItemInPage = 9;
     let sizeConstant = "size";
     let pageConstant = "page";
@@ -325,7 +323,7 @@ async function getCertificateByName(name) {
     loadItems(localCertificates)
 }
 
-import {getDao, getMapperDate} from './dao.js';
+import {getDao} from './dao.js';
 import {getCharStartParameter, getCharAnd, getBuilderUrlParameter} from './url.js'
 
 function initCertificates() {
@@ -344,8 +342,8 @@ function initCertificates() {
     // getCountCertificates(url + getCharStartParameter + getBuilderUrlParameter(pageConstant, nePage)
     //     + getCharAnd + getBuilderUrlParameter(sizeConstant, countItemInPage))
 
-    console.log("Tag name:", tagName.value);
-    console.log("Certificate name:", certificateName.value);
+
+    console.log(" name:", name.value);
     loadItems(localCertificates)
 }
 // let nePage = 0;
@@ -353,30 +351,12 @@ function initCertificates() {
 
 
 function init() {
-    console.log("value", val.value)
-    console.log("cert", cert)
-    console.log("tagss", tagss)
-
-    if (form2 != null && certificateName.value !== "") {
-        console.log('certificateName', certificateName.value);
-        getCertificateByName(certificateName.value)
-    } else if (form1 != null && tagName.value !== "") {
-        console.log('tagName', tagName.value);
-        getCertificateByTag(tagName.value)
+    if (name.value != null && name.value !== "") {
+        console.log('start searching by Name', name.value);
+        getCertificateByName(name.value)
     } else {
         initCertificates();
     }
-
-
-    // if (certificateName.value != null && certificateName.value !== "") {
-    //     console.log('certificateName', certificateName.value);
-    //     getCertificateByName(certificateName.value)
-    // } else if (tagName.value != null && tagName.value !== "") {
-    //     console.log('tagName', tagName.value);
-    //     getCertificateByTag(tagName.value)
-    // } else {
-    //     initCertificates();
-    // }
 }
 
 window.addEventListener("scroll", () => {
@@ -385,7 +365,7 @@ window.addEventListener("scroll", () => {
         page++;
         const documentReact = document.documentElement.getBoundingClientRect();
         if (documentReact < document.documentElement)
-        init()
+            init()
     }
 });
 

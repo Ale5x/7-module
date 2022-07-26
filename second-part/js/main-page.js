@@ -1,16 +1,15 @@
 import {scrollToTop, getCheckHeightScroll} from "./functions.js";
 import {getDao} from './dao.js';
-import {getCharStartParameter, getCharAnd, getBuilderUrlParameter, getRemoteHost, getApplicationName,
-    getSectionCertificste, getPageConstant, getSizeConstant, getGetAllCertificates, getGetCertificatesByName,
-    getGetCertificatesByTag, getNameConstant, getParameter} from './url.js';
+import {getCharStartParameter, getCharAnd, getBuilderUrlParameter, getRemoteHost, getSectionCertificate,
+    getPageConstant, getSizeConstant, getGetAllCertificates, getGetCertificatesByName,
+    getNameConstant, getParameter} from './url.js';
 
 const container = document.querySelector('.list-certificates');
 const nextPage = document.getElementById('next-page');
 let scrollPositionY;
 let page = 1;
-let form = document.getElementById('form');
-let tagName = document.getElementById('tag-name');
-let certificateName = document.getElementById('certificate-name');
+let form = document.getElementById('form-search-certificate');
+let name = document.getElementById('name');
 
 
 function getUrlFromLink(parameter, urlLine) {
@@ -43,7 +42,7 @@ function loadItems(certificates) {
         }
     } else if (certificates._embedded != null && numberNextPage >= 3){
         nextPage.style.display = "none";
-    } else if (certificates._embedded == null && numberNextPage == 2){
+    } else if (certificates._embedded == null && numberNextPage === 2){
         const div = document.createElement('div')
         div.innerHTML = `<h1 class="align-text-center">Not found</h1>`;
         container.appendChild(div);
@@ -60,22 +59,10 @@ async function getData(url) {
     loadItems(data)
 }
 
-function initUrlCertificateByTag(name) {
-    let countItemInPage = 9;
-
-    let buildUrl = getRemoteHost + getSectionCertificste + getGetCertificatesByTag
-        + getCharStartParameter + getBuilderUrlParameter(getPageConstant, page)
-        + getCharAnd + getBuilderUrlParameter(getSizeConstant, countItemInPage)
-        + getCharAnd + getBuilderUrlParameter(getNameConstant, name);
-
-
-    getData(buildUrl);
-}
-
 function initUrlCertificateByName(name) {
     let countItemInPage = 9;
 
-    let buildUrl = getRemoteHost + getSectionCertificste + getGetCertificatesByName
+    let buildUrl = getRemoteHost + getSectionCertificate + getGetCertificatesByName
         + getCharStartParameter + getBuilderUrlParameter(getPageConstant, page)
         + getCharAnd + getBuilderUrlParameter(getSizeConstant, countItemInPage)
         + getCharAnd + getBuilderUrlParameter(getNameConstant, name);
@@ -85,7 +72,7 @@ function initUrlCertificateByName(name) {
 function initUrlCertificates() {
     let countItemInPage = 9;
 
-    let buildUrl = getRemoteHost + getSectionCertificste + getGetAllCertificates
+    let buildUrl = getRemoteHost + getSectionCertificate + getGetAllCertificates
         + getCharStartParameter + getBuilderUrlParameter(getPageConstant, page)
         + getCharAnd + getBuilderUrlParameter(getSizeConstant, countItemInPage);
 
@@ -93,10 +80,8 @@ function initUrlCertificates() {
 }
 
 function init() {
-    if (certificateName.value != null && certificateName.value !== "") {
-        initUrlCertificateByName(certificateName.value)
-    } else if (tagName.value != null && tagName.value !== "") {
-        initUrlCertificateByTag(tagName.value)
+    if (name.value != null && name.value !== "") {
+        initUrlCertificateByName(name.value)
     } else {
         initUrlCertificates();
     }
@@ -107,19 +92,13 @@ window.addEventListener("scroll", () => {
         page++;
         init()
     }
-})
-
-form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    container.innerHTML = "";
-    page = 1;
-    init();
 });
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
     container.innerHTML = "";
     page = 1;
+    init();
 });
 
 function scrollToTopF() {

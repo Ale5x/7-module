@@ -34,7 +34,6 @@ html {
     width: 30%;
 }
 
-/* test version */
 .scrollTop {
     position: fixed;
     bottom: 35px;
@@ -75,67 +74,9 @@ html {
     height: 50px;
 }
 
-/*.scrollTop {*/
-/*    position: fixed;*/
-/*    bottom: 30px;*/
-/*    right: 20px;*/
-/*    padding: 10px 15px;*/
-/*    background-color: #000;*/
-/*    color: red;*/
-/*    border-radius: 5px;*/
-/*    !*border-radius: 1px solid #fff;*!*/
-/*    cursor: pointer;*/
-/*    transition: all 0.5s ease 0s;*/
-/*}*/
-/*.scrollTop:hover {*/
-/*    background-color: #4CAF50;*/
-/*    color: #000;*/
-/*}*/
-
-/*.scrollBack {*/
-/*    position: fixed;*/
-/*    bottom: 30px;*/
-/*    left: 30px;*/
-/*    padding: 10px 15px;*/
-/*    background-color: #000;*/
-/*    color: red;*/
-/*    border-radius: 5px;*/
-/*    !*border-radius: 1px solid #fff;*!*/
-/*    cursor: pointer;*/
-/*    transition: all 0.5s ease 0s;*/
-/*}*/
-
-/*.scrollBack:hover {*/
-/*    background-color: #4CAF50;*/
-/*    color: #000;*/
-/*}*/
-
-
-
-/*#list {*/
-/*    padding: 12px 0;*/
-/*    display: flex;*/
-/*    flex-wrap: wrap;*/
-/*    justify-content: center;*/
-/*}*/
-.item {
-    margin: 5px;
-    height: 400px;
-    width: 400px;
-    box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.4);
-    overflow: hidden;
-    border-radius: 10px;
-}
-
-/*#list img {*/
-/*    height: 100%;*/
-/*    width: 100%;*/
-/*    transition: transform 400ms ease-out;*/
-/*}*/
-
 .hidden {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
     display: flex;
     margin-left: auto;
     margin-right: auto;

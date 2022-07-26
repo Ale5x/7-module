@@ -2,7 +2,9 @@
 // secondsToDate(31536000);
 // toBase2Converter(10);
 // substringOccurrencesCounter("text", "text");
-repeatingLitters("Hello world")
+// repeatingLitters("Hello world");
+repeatingLitters("Hello world");
+// redundant("str");
 
 /**
  * You must return a date that comes in a predetermined number of seconds after 01.06.2020 00:00:002020
@@ -90,27 +92,33 @@ function substringOccurrencesCounter(substring, text) {
  *      "Hello world" -> "HHeello  wworrldd" // o, l is repeated more then once. Space was also repeated
  */
 function repeatingLitters(string) {
+    console.log("Task -> repeatingLitters");
     let newString = '';
+
     let map = new Map();
-    map.set('o', 1);
-    map.set('l', 1);
+    map.set('o', 0);
+    map.set('l', 0);
+
     for (let i = 0; i < string.length; i++) {
         if (map.has(string[i])) {
-            if (map.get(string[i]) < 2){
-                newString += string[i] + string[i];
-                let count = map.get(string[i]);
-                count++;
-                map.set(string[i], count);
+            let count = map.get(string[i]);
+            map.set(string[i], ++count);
+        }
+    }
+
+    for (let i = 0; i < string.length; i++) {
+        if (map.has(string[i])) {
+            if (map.get(string[i]) >= 2){
+                newString += string[i];
             } else {
-                // newString += string[i];
+                newString += string[i].repeat(2);
             }
         } else {
-            newString += string[i] + string[i];
+            newString += string[i].repeat(2);
         }
-
     }
-    console.log('string', newString);
-
+    console.log("line:", string);
+    console.log("New string:", newString);
 }
 
 /**
@@ -131,6 +139,10 @@ function repeatingLitters(string) {
  *      f3() ➞ ""
  */
 function redundant(str) {
+    console.log("Task -> redundant");
+    return function (str) {
+        return str;
+    }
 
 }
 

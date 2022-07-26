@@ -1,5 +1,5 @@
 import {getCharStartParameter, getBuilderUrlParameter, getRemoteHost, getApplicationName,
-    getSectionCertificste, getIdConstant, getParameter, getGetCertificate} from "./url.js";
+    getSectionCertificate, getIdConstant, getParameter, getGetCertificate} from "./url.js";
 import {getDao} from './dao.js';
 
 let id = 1;
@@ -20,7 +20,7 @@ async function getCertificate(urlLine) {
 }
 
 function buildUrl(id) {
-    return  getRemoteHost + getSectionCertificste + getGetCertificate + getCharStartParameter + getBuilderUrlParameter(idConstant, id);
+    return  getRemoteHost + getSectionCertificate + getGetCertificate + getCharStartParameter + getBuilderUrlParameter(idConstant, id);
 }
 
 function loadItem(certificate) {
